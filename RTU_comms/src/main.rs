@@ -9,8 +9,13 @@ use rtu_api::{HeaderType, TransmitData};
 
 use crate::rtu_api::{CameraPos, Frame, Polygon};
 
+use std::fs::File;
+use std::io::{self, BufRead};
+use std::path::Path;
 
-const WREN: u8 = 0x06;
+const DISPLAY_HEIGHT: u8 = 191;
+const DISPLAY_WIDTH: u8 = 255;
+const MEM_SIZE: usize = (DISPLAY_WIDTH as usize + 1) * (DISPLAY_WIDTH as usize + 1) - 1; 
 
 fn main() {
     test_mode();
@@ -18,7 +23,7 @@ fn main() {
 
 
 fn test_mode() {
-    let mut spi = Spi::new(Bus::Spi0, SlaveSelect::Ss0, 8_000_000, rppal::spi::Mode::Mode0).unwrap();
+    let mut spi = Spi::new(Bus::Spi0, SlaveSelect::Ss0, 12_000_000, rppal::spi::Mode::Mode0).unwrap();
 
     println!("Press Up to send a frame");
     println!("Press Down to send camera position");
@@ -31,14 +36,28 @@ fn test_mode() {
     println!("{}", mem::size_of::<CameraPos>());
     println!("{}", mem::size_of::<Polygon>());
 
+    
+
     let mut camera = rtu_api::CameraPos::new(0.0, 0.0, 0.0);
     let mut keyboard = Keyboard::new();
     loop {
         let key = keyboard.read_key();
         match key {
             Keys::Up => {
-                let data = TransmitData::new_frame(0, 0, 0x0F0F);
-                send_rtu(&mut spi, data);
+                let image = send_image();
+                for i in 0..=DISPLAY_HEIGHT {
+                    for j in 0..=DISPLAY_WIDTH {
+                        let index: usize = (j as usize) << 8 | (i as usize);
+                        println!("x: {} y: {}, addr: {:#x}", i, j, index);
+                        let color:u16 = image[index] ;
+                        let data = TransmitData::new_frame(i,  j, color);
+                        send_rtu(&mut spi, data)
+                    }
+                }
+                // for _ in 0..2 {
+                //     let data = TransmitData::new_frame(50,  10, 0x0fff);
+                //     send_rtu(&mut spi, data)
+                // }
             }
             Keys::Down => {
                 camera.move_camera(1.0, 0.0, 0.0);
@@ -64,10 +83,43 @@ fn test_mode() {
     }
 }
 
+fn send_image() -> [u16; MEM_SIZE as usize ]{
+    let mut results = [0_u16; MEM_SIZE];
+    if let Ok(lines) = read_lines("./start_frame.mem") {
+        let mut index = 0;
+        for line_result in lines {
+            if index >= MEM_SIZE {
+                break; // Stop reading if we have filled the array
+            }
+            match line_result {
+                Ok(line) => {
+                    match u16::from_str_radix(&line, 16) {
+                        Ok(num) => {
+                            // println!("{} => red: {}, green: {}, blue: {}, val: {}", line, (num >> 8) & 0xF, (num >> 4) & 0xF, num & 0xF, num);
+                            results[index] = num;
+                            index += 1;
+                        },
+                        Err(e) => println!("Failed to parse line as hex number: {:?}", e)
+                    }
+                },
+                Err(e) => println!("Failed to read line: {:?}", e)
+            }
+        }
+    }
+    results
+}
+
+
+
+fn read_lines<P>(filename: P) -> io::Result<io::Lines<io::BufReader<File>>>
+where P: AsRef<Path>, {
+    let file = File::open(filename)?;
+    Ok(io::BufReader::new(file).lines())
+}
 
 fn send_rtu(spi: &mut Spi, data: TransmitData) {
     if let Some(header) = HeaderType::from_u8(data.header) {
-        spi.write(&[WREN]).unwrap();
+        // spi.write(&[WREN]).unwrap();
         let header_bytes: &[u8] = bytemuck::bytes_of(&data.header);
         match header {
             HeaderType::Frame => {
@@ -76,6 +128,7 @@ fn send_rtu(spi: &mut Spi, data: TransmitData) {
                 let data_bytes = [header_bytes, frame_bytes].concat();
                 spi.write(&data_bytes).unwrap();
                 println!("{:?}", data_bytes);
+                println!("{:02X?}", data_bytes); 
             }
             HeaderType::Init => {
                 println!("Sending Init");
