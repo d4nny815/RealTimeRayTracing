@@ -1,10 +1,10 @@
 import sys
 from PIL import Image
 
-# DISP_WIDTH = 256
-# DISP_HEIGHT = 192
-DISP_WIDTH = 512
-DISP_HEIGHT = 384
+DISP_WIDTH = 256
+DISP_HEIGHT = 192
+# DISP_WIDTH = 512
+# DISP_HEIGHT = 384
 
 
 
@@ -16,8 +16,8 @@ def main():
     new_img.save('frame.png')
     
     with open('start_frame.mem', 'w') as f:
-        for h in range(512):
-            for v in range(512):
+        for h in range(DISP_WIDTH):
+            for v in range(DISP_WIDTH):
                 if v > DISP_HEIGHT - 1:
                     f.write('0\n')
                     continue

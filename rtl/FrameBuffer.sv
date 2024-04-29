@@ -3,18 +3,18 @@
 // The VGA display has a resolution of 512 x 384 with 12-bit color depth.
 module FrameBuffer(
     input clk,
-    input [17:0] pixel_addr_RTU,
+    input [15:0] pixel_addr_RTU,
     input [11:0] pixel_data_RTU,
     input we_RTU,
 
-    input [17:0] pixel_addr_DISP,
+    input [15:0] pixel_addr_DISP,
     input re_DISP,
 
     output logic [11:0] pixel_data_DISP
     );
     
-    localparam V_PIXELS = 384;
-    localparam H_PIXELS = 512;
+    localparam V_PIXELS = 192;
+    localparam H_PIXELS = 256;
     localparam MEM_SIZE = 2 ** ($clog2(V_PIXELS) + $clog2(H_PIXELS));
 
     (* rom_style="{distributed | block}" *)
@@ -22,15 +22,18 @@ module FrameBuffer(
     initial
         $readmemh("start_frame.mem", frame, 0, MEM_SIZE - 1); 
 
-    always_ff @ (posedge clk) begin
+    always_ff @ (negedge clk) begin
         if (we_RTU) begin
             frame[pixel_addr_RTU] <= pixel_data_RTU;
         end
+        if (re_DISP) begin
+            pixel_data_DISP <= frame[pixel_addr_DISP];
+        end
     end
 
-    always_comb begin
-        pixel_data_DISP = re_DISP ? frame[pixel_addr_DISP] : 12'd0;
-    end
+    // always_comb begin
+    //     pixel_data_DISP = re_DISP ? frame[pixel_addr_DISP] : 12'd0;
+    // end
  
 
     // ! If I want to learn how to use to DRAM
