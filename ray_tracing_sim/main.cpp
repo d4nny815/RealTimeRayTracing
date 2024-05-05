@@ -11,7 +11,7 @@ using namespace std;
 
 
 int main(void) {
-    vector<Face_t> obj_mem = parse_obj("scene.obj");
+    vector<Face_t> obj_mem = parse_obj("scene.ply", 90, 152);
     
     Ray_t ray = {
         {0.0f, 0.0f, 0.0f},
@@ -22,8 +22,9 @@ int main(void) {
     int i = 0;
     for (Face_t face : obj_mem) {
         if (does_ray_triangle_intersect(ray, face)) {
-            printf("Ray intersects triangle %d at %f\n", i++, ray_triangle_intersection(ray, face));
+            // printf("Ray intersects triangle %d at %f\n", i, ray_triangle_intersection(ray, face));
             print_vertex(ray_point(ray, ray_triangle_intersection(ray, face)));
+            i++;
         }
     }
 

@@ -30,15 +30,17 @@ typedef struct Face_t {
     Vertex_t v2;
     Vertex_t v3;
     Vector_t normal;
+    uint16_t color;
 } Face_t;
 
 
 
-std::vector<Face_t> parse_obj(const char* filename);
-Vertex_t parse_vertex(std::string line);
-Vector_t parse_vector(std::string line);
-Face_t parse_face(std::string line, std::vector<Vertex_t> vertices, std::vector<Vector_t> vertex_normals);
+std::vector<Face_t> parse_obj(const char* filename, int vertices_cnt, int faces_cnt);
+void parse_vertex(std::string line, Vertex_t *v, Vector_t *vn, uint32_t *color);
+void parse_face(std::string line, Face_t* face, std::vector<Vertex_t> vertices, std::vector<Vector_t> vertex_normals, std::vector<uint32_t> colors);
 
+
+Vector_t parse_vector(std::string line);
 Vector_t vec_cross_product(Vector_t A, Vector_t B);
 float vec_dot_product(Vector_t A, Vector_t B);
 Vector_t vec_scalar(Vector_t A, float scalar);

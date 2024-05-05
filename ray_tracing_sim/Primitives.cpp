@@ -1,6 +1,6 @@
 #include "Primitives.hpp"
 
-std::vector<Face_t> parse_obj(const char* filename) {
+std::vector<Face_t> parse_obj(const char* filename, int vertices_cnt, int faces_cnt) {
     std::fstream file (filename);
     if (!file.is_open()) {
         std::cerr << "Error: Could not open file " << filename << std::endl;
@@ -8,77 +8,160 @@ std::vector<Face_t> parse_obj(const char* filename) {
     }
 
 
-    std::vector<Vertex_t> vertices;
-    std::vector<Vector_t> vertex_normals;
-    std::vector<Face_t> faces;
+    
 
     while (!file.eof()) {
         std::string line;
         std::getline(file, line);
 
-        std::string type = line.substr(0, line.find(' '));
-        if (type.compare(VERTEX_CHAR) == 0) {
-            vertices.push_back(parse_vertex(line));
+        if (line.compare("end_header") == 0) {
+            printf("end header\n");
+            break;
         }
-        else if (type.compare(VERTEX_NORMAL_CHAR) == 0) {
-            vertex_normals.push_back(parse_vector(line));
-        }
-        else if (type.compare(FACE_CHAR) == 0) {
-            faces.push_back(parse_face(line, vertices, vertex_normals));
-        } 
-
     }
 
+    std::vector<Vertex_t> vertices;
+    std::vector<Vector_t> vertex_normals;
+    std::vector<uint32_t> colors;
+    for (int _=0; _<vertices_cnt; _++) {
+        Vertex_t v;
+        Vector_t vn;
+        uint32_t color_base;
+
+        std::string line;
+        std::getline(file, line);
+        parse_vertex(line, &v, &vn, &color_base);
+
+        vertices.push_back(v);
+        vertex_normals.push_back(vn);
+        colors.push_back(color_base);
+    }
+
+    // printf("Vertices:\n");
+    // for (Vertex_t v : vertices) {
+        // print_vertex(v);
+    // }
+
+    // printf("Vertex Normals:\n");
+    // for (Vector_t vn : vertex_normals) {
+    //     print_vector(vn);
+    // }
+
+    // printf("Colors:\n");
+    // for (uint16_t color : colors) {
+    //     printf("0x%04x\n", color);
+    // }
+
+    std::vector<Face_t> faces;
+
+    for (int _=0; _<faces_cnt; _++) {
+        Face_t face = {};
+        std::string line;
+        std::getline(file, line);
+        parse_face(line, &face, vertices, vertex_normals, colors);
+        faces.push_back(face);
+    }
+
+    // printf("Faces:\n");
+    // for (Face_t f : faces) {
+    //     print_face(f);
+    // }
     return faces;
 }
 
-Vertex_t parse_vertex(std::string line) {
-    Vertex_t v;
-    std::string x, y, z;
-    
-    x = line.substr(2, line.find(' ', 2) - 2);
-    y = line.substr(line.find(' ', 2) + 1, line.find(' ', line.find(' ', 2) + 1) - line.find(' ', 2) - 1);
-    z = line.substr(line.find(' ', line.find(' ', 2) + 1) + 1, line.find(' ', line.find(' ', line.find(' ', 2) + 1) + 1) - line.find(' ', line.find(' ', 2) + 1) - 1);
+void parse_vertex(std::string line, Vertex_t* v, Vector_t* vn, uint32_t* color) {
+    std::string x, y, z, nx, ny, nz, r, g, b;
 
+    size_t start = 0;
+    size_t end = line.find(" ");
+    x = line.substr(start, end - start);
+    start = end + 1;
+    end = line.find(" ", start);
+    y = line.substr(start, end - start);
+    start = end + 1;
+    end = line.find(" ", start);
+    z = line.substr(start, end - start);
+    start = end + 1;
+    end = line.find(" ", start);
+    nx = line.substr(start, end - start);
+    start = end + 1;
+    end = line.find(" ", start);
+    ny = line.substr(start, end - start);
+    start = end + 1;
+    end = line.find(" ", start);
+    nz = line.substr(start, end - start);
+    start = end + 1;
+    end = line.find(" ", start);
+    r = line.substr(start, end - start);
+    start = end + 1;
+    end = line.find(" ", start);
+    g = line.substr(start, end - start);
+    start = end + 1;
+    end = line.find(" ", start);
+    b = line.substr(start, end - start);
 
-    v.x = std::stof(x);
-    v.y = std::stof(y);
-    v.z = std::stof(z);
+    v->x = std::stof(x);
+    v->y = std::stof(y);
+    v->z = std::stof(z);
 
-    return v;
+    vn->i = std::stof(nx);
+    vn->j = std::stof(ny);
+    vn->k = std::stof(nz);
+
+    uint8_t red = (std::stoi(r));
+    uint8_t green = (std::stoi(g));
+    uint8_t blue = (std::stoi(b));
+    *color = (red << 16) | (green << 8) | blue;
+
+    return;
 }
 
-Vector_t parse_vector(std::string line) {
-    Vector_t v;
-    std::string i, j, k;
+void parse_face(std::string line, Face_t* face, std::vector<Vertex_t> vertices, std::vector<Vector_t> vertex_normals, std::vector<uint32_t> colors) {
+    std::string v1_ind, v2_ind, v3_ind;
 
-    i = line.substr(3, line.find(' ', 3) - 3);
-    j = line.substr(line.find(' ', 3) + 1, line.find(' ', line.find(' ', 3) + 1) - line.find(' ', 3) - 1);
-    k = line.substr(line.find(' ', line.find(' ', 3) + 1) + 1, line.find(' ', line.find(' ', line.find(' ', 3) + 1) + 1) - line.find(' ', line.find(' ', 3) + 1) - 1);
+    size_t start = 2;
+    size_t end = line.find(" ", start);
+    v1_ind = line.substr(start, end - start);
+    start = end + 1;
+    end = line.find(" ", start);
+    v2_ind = line.substr(start, end - start);
+    start = end + 1;
+    end = line.find(" ", start);
+    v3_ind = line.substr(start, end - start);
 
-    v.i = std::stof(i);
-    v.j = std::stof(j);
-    v.k = std::stof(k);
+    face->v1 = vertices[std::stoi(v1_ind)];
+    face->v2 = vertices[std::stoi(v2_ind)];
+    face->v3 = vertices[std::stoi(v3_ind)];
 
-    return v;
+    face->normal.i = (vertex_normals[std::stoi(v1_ind)].i + 
+                        vertex_normals[std::stoi(v2_ind)].i + 
+                        vertex_normals[std::stoi(v3_ind)].i) 
+                        / 3;
+    face->normal.j = (vertex_normals[std::stoi(v1_ind)].j +
+                        vertex_normals[std::stoi(v2_ind)].j +
+                        vertex_normals[std::stoi(v3_ind)].j)
+                        / 3;
+    face->normal.k = (vertex_normals[std::stoi(v1_ind)].k +
+                        vertex_normals[std::stoi(v2_ind)].k +
+                        vertex_normals[std::stoi(v3_ind)].k)
+                        / 3;
+    face->normal = vec_normalize(face->normal);
+            
+                
+    uint8_t red = ((colors[std::stoi(v1_ind)] >> 16) + 
+                    (colors[std::stoi(v2_ind)] >> 16) + 
+                    (colors[std::stoi(v3_ind)] >> 16)) / 3;
+    uint8_t green = ((colors[std::stoi(v1_ind)] >> 8) + 
+                    (colors[std::stoi(v2_ind)] >> 8) + 
+                    (colors[std::stoi(v3_ind)] >> 8)) / 3;
+    uint8_t blue = ((colors[std::stoi(v1_ind)]) +
+                    (colors[std::stoi(v2_ind)]) +
+                    (colors[std::stoi(v3_ind)])) / 3;    
+
+    face->color = ((red >> 4) << 8) | ((green >> 4) << 4) | (blue >> 4);
+    return;
 }
 
-Face_t parse_face(std::string line, std::vector<Vertex_t> vertices, std::vector<Vector_t> vertex_normals) {
-    Face_t f;
-    std::string v1_ind, v2_ind, v3_ind, vn_ind;
-
-    v1_ind = line.substr(2, line.find('/', 2) - 2);
-    v2_ind = line.substr(line.find(' ', 2) + 1, line.find('/', line.find(' ', 2) + 1) - line.find(' ', 2) - 1);
-    v3_ind = line.substr(line.find(' ', line.find(' ', 2) + 1) + 1, line.find('/', line.find(' ', line.find(' ', 2) + 1) + 1) - line.find(' ', line.find(' ', 2) + 1) - 1);
-    vn_ind = line.substr(line.find('/', line.find(' ', line.find(' ', 2) + 1) + 1) + 2, line.find(' ', line.find('/', line.find(' ', line.find(' ', 2) + 1) + 1) + 2) - line.find('/', line.find(' ', line.find(' ', 2) + 1) + 1) - 2);
-
-    f.v1 = vertices.at(std::stoi(v1_ind) - 1);
-    f.v2 = vertices.at(std::stoi(v2_ind) - 1);
-    f.v3 = vertices.at(std::stoi(v3_ind) - 1);
-    f.normal = vertex_normals.at(std::stoi(vn_ind) - 1);
-
-    return f;
-}
 
 float vec_dot_product(Vector_t A, Vector_t B) {
     return A.i * B.i + A.j * B.j + A.k * B.k;
@@ -120,14 +203,6 @@ float vec_magnitude(Vector_t A) {
 
 
 
-
-
-
-
-
-
-
-
 void print_vertex(Vertex_t v) {
     std::cout << "Vertex: (" << v.x << ", " << v.y << ", " << v.z << ")" << std::endl;
 }
@@ -142,6 +217,7 @@ void print_face(Face_t f) {
     print_vertex(f.v2);
     print_vertex(f.v3);
     print_vector(f.normal);
+    printf("Color: r: %hhx, g: %hhx, b: %hhx\n", (f.color >> 8) & 0xf, (f.color >> 4) & 0xf, f.color & 0xf);
     printf("}\n");
 }
 
