@@ -7,15 +7,11 @@ std::vector<Face_t> parse_obj(const char* filename, int vertices_cnt, int faces_
         exit(1);
     }
 
-
-    
-
     while (!file.eof()) {
         std::string line;
         std::getline(file, line);
 
         if (line.compare("end_header") == 0) {
-            printf("end header\n");
             break;
         }
     }
@@ -198,6 +194,22 @@ Vector_t vec_normalize(Vector_t A) {
 
 float vec_magnitude(Vector_t A) {
     return sqrt(A.i * A.i + A.j * A.j + A.k * A.k);
+}
+
+uint8_t face_get_red(Face_t f) {
+    return (f.color >> 8) & 0xf;
+}
+
+uint8_t face_get_green(Face_t f) {
+    return (f.color >> 4) & 0xf;
+}
+
+uint8_t face_get_blue(Face_t f) {
+    return f.color & 0xf;
+}
+
+Vector_t vertex_to_vector(Vertex_t v) {
+    return {v.x, v.y, v.z};
 }
 
 

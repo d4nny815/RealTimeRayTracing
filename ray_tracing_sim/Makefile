@@ -2,7 +2,7 @@ CC = g++
 CFLAGS = -g -Wall -std=c++20 -Wextra -pedantic
 BUILD_DIR = build
 
-OBJS = Primitives RayTracer
+OBJS = Primitives RayTracer Display
 
 PROGS = main
 all : dirs $(PROGS)
