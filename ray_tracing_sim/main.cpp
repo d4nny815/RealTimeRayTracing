@@ -1,57 +1,62 @@
 #include <iostream>
 using namespace std;
 
-#include "Primitives.hpp"
-#include "RayTracer.hpp"
-#include "Display.hpp"
-#define DEFAULT_COLOR 0x0fff
-
-void ray_trace(Camera_t camera, Display_t* display, vector<Face_t> obj_mem);
+#include "OffFile/OffFile.hpp"
+#include "Primitives/Primitives.hpp"
+#include "PlyFile/PlyFile.hpp"
+#include "Transformation/Transformation.h"
+#include "Lighting/Lighting.h"
+#include "Projection/Projection.h"
+#include "Rasterization/Rasterization.hpp"
+#include "Display/Display.hpp"
 
 
 int main(void) {
     // vector<Face_t> obj_mem = parse_obj("scene.ply", 90, 152);
+    // OffFile* off_file = read_off_file("teapot.off");
     vector<Face_t> obj_mem = parse_obj("cube.ply", 24, 12);
+    // std::vector<Face_t> obj_mem = off_file->faces;
 
-    Vertex_t cam_pos = Vertex_t({3.0f, 0.5f, 3.5f});
+    
 
-    Camera_t cam = create_camera(cam_pos, 
-                                Vector_t({0.0f, 0.0f, 1.0f}), 
-                                Vector_t({0.0f, 1.0f, 0.0f}),
-                                1.0f, 1.0f);
 
-    Display_t display = create_display();
 
-    ray_trace(cam, &display, obj_mem);
+    printf("Transformation\n");
+    for (Face_t& face: obj_mem) {
+        transformFace(&face, TRANSFORM_MATRIX, MAT_DIM);
 
-    save_display(display, "output");
-    return 0;
-}
-
-void ray_trace(Camera_t camera, Display_t* display, vector<Face_t> obj_mem) {
-    for (int i = 0; i < DISPLAY_WIDTH; i++) {
-        for (int j = 0; j < DISPLAY_HEIGHT; j++) {
-            Vertex_t point = Vertex_t({
-                (float)i / DISPLAY_WIDTH - 0.5f,
-                (float)j / DISPLAY_HEIGHT - 0.5f,
-                0.0f});
-
-            Ray_t ray = create_ray(camera, point);
-
-            for (Face_t face : obj_mem) {
-                if (does_ray_triangle_intersect(ray, face)) {
-                    float t = ray_triangle_intersection(ray, face);
-                    if (t < ray.t) {
-                        ray.t = t;
-                        display_pixel(display, i, j, face.color);
-                    }
-                }
-            }
-
-            if (ray.t == RAY_T_MAX) {
-                display_pixel(display, i, j, DEFAULT_COLOR);
-            }
-        }
+        // print_face(face);
     }
-    return;
+
+
+
+    printf("Lighting\n");
+    Vector_t LIGHT_VEC = {.6, .707, .9};
+	Vector_t LIGHT_VEC_NORMALIZED = vec_normalize(LIGHT_VEC);
+    for (Face_t& face: obj_mem) {
+        face.color = calc_color_intensity(face.color, face.normal, LIGHT_VEC_NORMALIZED);
+
+        // print_face(face);
+    }
+
+    printf("Projection\n");
+    std::vector<intFace_t> projected_faces;
+    for (Face_t face: obj_mem) {
+        intFace_t projected_face = project_Face(face, DISPLAY_WIDTH - 1, DISPLAY_HEIGHT - 1, DEPTH - 1);
+        // print_intFace(projected_face);
+        projected_faces.push_back(projected_face);
+    }
+
+
+    printf("Rasterization\n");
+    Display_t display = create_display();
+    rasterize(projected_faces, &display);
+    // print_color_buffer(display);
+
+    printf("Saving Display\n");
+    save_display(display, "output");
+
+    printf("Done\n");
+    return 0;
+
 }
