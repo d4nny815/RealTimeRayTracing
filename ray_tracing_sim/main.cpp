@@ -12,10 +12,13 @@ using namespace std;
 
 
 int main(void) {
+    // ! DANNY
+    // ! export ply with -z forward and y up
     // vector<Face_t> obj_mem = parse_obj("scene.ply", 90, 152);
-    // OffFile* off_file = read_off_file("teapot.off");
-    vector<Face_t> obj_mem = parse_obj("cube.ply", 24, 12);
-    // std::vector<Face_t> obj_mem = off_file->faces;
+    // vector<Face_t> obj_mem = parse_obj("cube.ply", 24, 12);
+    // vector<Face_t> obj_mem = parse_obj("cube2.ply", 24, 12);
+    // vector<Face_t> obj_mem = parse_obj("obj3.ply", 264, 92);
+    vector<Face_t> obj_mem = parse_obj("funny.ply", 5100, 2124);
 
     
 

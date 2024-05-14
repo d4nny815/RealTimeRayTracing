@@ -190,19 +190,17 @@ std::vector<intVertex_t> getVerticesInFace(intFace_t f) {
 void rasterize(std::vector<intFace_t> faces, Display_t* display) {
     for (unsigned int i=0; i<faces.size(); i++) {
         intFace_t f = faces.at(i);
+        printf("starting Rasterized face %d of %ld\n", i, faces.size());
         std::vector<intVertex_t> blocks = getVerticesInFace(f);
         for (unsigned int j=0; j<blocks.size(); j++) {
             intVertex_t v = blocks.at(j);
 
-            // uint8_t z = display_get_z(*display, v.x, v.y);
-            // printf("checking Z:%d against %d\n", v.z, z);
-            if (v.z < display_get_z(*display, v.x, v.y)) {
-                // printf("Setting z: %d, %d, %d\n", v.x, v.y, v.z);
+            if (v.z <= display_get_z(*display, v.x, v.y)) {
                 display_set_z(display, v.x, v.y, v.z);
                 display_set_color(display, v.x, v.y, f.color);
             }
         }
-        // printf("Rasterized face %d of %ld\n", i, faces.size());
+        printf("Rasterized face %d of %ld\n", i, faces.size());
     }
     return;
 }
