@@ -33,6 +33,7 @@ std::vector<Face_t> parse_obj(const char* filename, int vertices_cnt, int faces_
         colors.push_back(color_base);
     }
 
+
     std::vector<Face_t> faces;
 
     for (int _=0; _<faces_cnt; _++) {
@@ -89,6 +90,7 @@ void parse_vertex_line(std::string line, Vertex_t* v, Vector_t* vn, uint32_t* co
     uint8_t green = (std::stoi(g));
     uint8_t blue = (std::stoi(b));
     *color = (red << 16) | (green << 8) | blue;
+    // printf("red: %x, green: %x, blue: %x, color: %x\n", red, green, blue, *color);
 
     return;
 }
@@ -105,6 +107,8 @@ void parse_face_line(std::string line, Face_t* face, std::vector<Vertex_t> verti
     start = end + 1;
     end = line.find(" ", start);
     v3_ind = line.substr(start, end - start);
+
+    printf("ind1: %s, ind2: %s, ind3: %s\n", v1_ind.c_str(), v2_ind.c_str(), v3_ind.c_str());
 
     face->v1 = vertices[std::stoi(v1_ind)];
     face->v2 = vertices[std::stoi(v2_ind)];
@@ -128,6 +132,7 @@ void parse_face_line(std::string line, Face_t* face, std::vector<Vertex_t> verti
     uint8_t red = ((colors[std::stoi(v1_ind)] >> 16) + 
                     (colors[std::stoi(v2_ind)] >> 16) + 
                     (colors[std::stoi(v3_ind)] >> 16)) / 3;
+    // printf("red1: %x, red2: %x, red3: %x, red: %x\n", colors[std::stoi(v1_ind)] >> 16, colors[std::stoi(v2_ind)] >> 16, colors[std::stoi(v3_ind)] >> 16, red);
     uint8_t green = ((colors[std::stoi(v1_ind)] >> 8) + 
                     (colors[std::stoi(v2_ind)] >> 8) + 
                     (colors[std::stoi(v3_ind)] >> 8)) / 3;
@@ -136,5 +141,8 @@ void parse_face_line(std::string line, Face_t* face, std::vector<Vertex_t> verti
                     (colors[std::stoi(v3_ind)])) / 3;    
 
     face->color = ((red >> 4) << 8) | ((green >> 4) << 4) | (blue >> 4);
+
+    // printf("red: %x, green: %x, blue: %x, color: %x\n", red, green, blue, face->color);
+    
     return;
 }
