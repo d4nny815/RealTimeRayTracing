@@ -14,6 +14,14 @@ typedef struct packed {
 } Vector_t;
 
 typedef struct packed {
+    Vertex_t v1;
+    Vertex_t v2;
+    Vertex_t v2;
+    Vector_t normal;
+    logic [11:0] color;
+} Face_t;
+
+typedef struct packed {
     Vector_t v1; // column 1
     Vector_t v2; // column 2
     Vector_t v3; // column 3
@@ -56,7 +64,6 @@ task q8_8_mult(
             op1 = -a;
             op2 = -b;
         end
-        default: return;
     endcase
 
     tmp = op1 * op2;
@@ -66,7 +73,6 @@ task q8_8_mult(
         2'b10: result = -tmp[23:8];
         2'b01: result = -tmp[23:8];
         2'b11: result = tmp[23:8];
-        default: return;
     endcase
     
 endtask : q8_8_mult
