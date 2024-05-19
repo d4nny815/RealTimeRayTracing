@@ -1,0 +1,14 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/Primitives.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module DotProduct
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/GPU.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module GPU
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/Lightning.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module LightingModule
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ObjectMemory
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/cntr_sync_clr.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Counter
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/top_level.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/verfication/GPU_TB.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module GPU_TB

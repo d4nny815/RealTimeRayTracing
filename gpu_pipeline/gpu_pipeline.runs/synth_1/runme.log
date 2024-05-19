@@ -1,0 +1,418 @@
+
+*** Running vivado
+    with args -log top.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source top.tcl
+
+
+****** Vivado v2023.2 (64-bit)
+  **** SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+  **** IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+  **** SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source top.tcl -notrace
+create_project: Time (s): cpu = 00:00:07 ; elapsed = 00:00:06 . Memory (MB): peak = 1333.738 ; gain = 0.023 ; free physical = 19522 ; free virtual = 27693
+Command: read_checkpoint -auto_incremental -incremental /home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/gpu_pipeline/gpu_pipeline.srcs/utils_1/imports/synth_1/top.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from /home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/gpu_pipeline/gpu_pipeline.srcs/utils_1/imports/synth_1/top.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top top -part xc7a100tcsg324-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 141001
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1707.484 ; gain = 373.746 ; free physical = 18887 ; free virtual = 27058
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'top' [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/top_level.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'GPU' [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/GPU.sv:3]
+	Parameter FACES bound to: 92 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'Counter' [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/cntr_sync_clr.sv:1]
+	Parameter BITS bound to: 7 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'Counter' (0#1) [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/cntr_sync_clr.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'LightingModule' [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/Lightning.sv:3]
+INFO: [Synth 8-6155] done synthesizing module 'LightingModule' (0#1) [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/Lightning.sv:3]
+INFO: [Synth 8-6155] done synthesizing module 'GPU' (0#1) [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/GPU.sv:3]
+INFO: [Synth 8-6157] synthesizing module 'ObjectMemory' [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:3]
+	Parameter FACE_CNT bound to: 92 - type: integer 
+WARNING: [Synth 8-2898] ignoring malformed $readmem task: invalid memory name [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:18]
+INFO: [Synth 8-6155] done synthesizing module 'ObjectMemory' (0#1) [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:3]
+INFO: [Synth 8-6155] done synthesizing module 'top' (0#1) [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/top_level.sv:1]
+WARNING: [Synth 8-3848] Net face_o[v1][x] in module/entity LightingModule does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/Lightning.sv:10]
+WARNING: [Synth 8-3848] Net face_o[v1][y] in module/entity LightingModule does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/Lightning.sv:10]
+WARNING: [Synth 8-3848] Net face_o[v1][z] in module/entity LightingModule does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/Lightning.sv:10]
+WARNING: [Synth 8-3848] Net face_o[v2][x] in module/entity LightingModule does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/Lightning.sv:10]
+WARNING: [Synth 8-3848] Net face_o[v2][y] in module/entity LightingModule does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/Lightning.sv:10]
+WARNING: [Synth 8-3848] Net face_o[v2][z] in module/entity LightingModule does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/Lightning.sv:10]
+WARNING: [Synth 8-3848] Net face_o[v3][x] in module/entity LightingModule does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/Lightning.sv:10]
+WARNING: [Synth 8-3848] Net face_o[v3][y] in module/entity LightingModule does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/Lightning.sv:10]
+WARNING: [Synth 8-3848] Net face_o[v3][z] in module/entity LightingModule does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/Lightning.sv:10]
+WARNING: [Synth 8-3848] Net face_o[normal][i] in module/entity LightingModule does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/Lightning.sv:10]
+WARNING: [Synth 8-3848] Net face_o[normal][j] in module/entity LightingModule does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/Lightning.sv:10]
+WARNING: [Synth 8-3848] Net face_o[normal][k] in module/entity LightingModule does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/Lightning.sv:10]
+WARNING: [Synth 8-3848] Net face_o[color] in module/entity LightingModule does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/Lightning.sv:10]
+WARNING: [Synth 8-6014] Unused sequential element face_num_L_reg was removed.  [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/GPU.sv:80]
+WARNING: [Synth 8-6014] Unused sequential element face_num_P_reg was removed.  [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/GPU.sv:100]
+WARNING: [Synth 8-6014] Unused sequential element face_P_reg[v1][x] was removed.  [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/GPU.sv:101]
+WARNING: [Synth 8-6014] Unused sequential element face_P_reg[v1][y] was removed.  [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/GPU.sv:101]
+WARNING: [Synth 8-6014] Unused sequential element face_P_reg[v1][z] was removed.  [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/GPU.sv:101]
+WARNING: [Synth 8-6014] Unused sequential element face_P_reg[v2][x] was removed.  [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/GPU.sv:101]
+WARNING: [Synth 8-6014] Unused sequential element face_P_reg[v2][y] was removed.  [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/GPU.sv:101]
+WARNING: [Synth 8-6014] Unused sequential element face_P_reg[v2][z] was removed.  [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/GPU.sv:101]
+WARNING: [Synth 8-6014] Unused sequential element face_P_reg[v3][x] was removed.  [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/GPU.sv:101]
+WARNING: [Synth 8-6014] Unused sequential element face_P_reg[v3][y] was removed.  [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/GPU.sv:101]
+WARNING: [Synth 8-6014] Unused sequential element face_P_reg[v3][z] was removed.  [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/GPU.sv:101]
+WARNING: [Synth 8-6014] Unused sequential element face_P_reg[normal][i] was removed.  [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/GPU.sv:101]
+WARNING: [Synth 8-6014] Unused sequential element face_P_reg[normal][j] was removed.  [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/GPU.sv:101]
+WARNING: [Synth 8-6014] Unused sequential element face_P_reg[normal][k] was removed.  [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/GPU.sv:101]
+WARNING: [Synth 8-6014] Unused sequential element face_P_reg[color] was removed.  [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/GPU.sv:101]
+WARNING: [Synth 8-3848] Net faces[0][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[1][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[2][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[3][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[4][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[5][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[6][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[7][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[8][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[9][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[10][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[11][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[12][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[13][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[14][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[15][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[16][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[17][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[18][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[19][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[20][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[21][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[22][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[23][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[24][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[25][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[26][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[27][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[28][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[29][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[30][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[31][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[32][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[33][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[34][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[35][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[36][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[37][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[38][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[39][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[40][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[41][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[42][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[43][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[44][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[45][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[46][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[47][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[48][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[49][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[50][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[51][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[52][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[53][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[54][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[55][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[56][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[57][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[58][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[59][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[60][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[61][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[62][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[63][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[64][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[65][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[66][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[67][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[68][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[69][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[70][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[71][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[72][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[73][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[74][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[75][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[76][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[77][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[78][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[79][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[80][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[81][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[82][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[83][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[84][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[85][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+WARNING: [Synth 8-3848] Net faces[86][v1][x] in module/entity ObjectMemory does not have driver. [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv:15]
+INFO: [Common 17-14] Message 'Synth 8-3848' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+WARNING: [Synth 8-7129] Port face_o[v1][x][15] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][x][14] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][x][13] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][x][12] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][x][11] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][x][10] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][x][9] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][x][8] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][x][7] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][x][6] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][x][5] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][x][4] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][x][3] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][x][2] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][x][1] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][x][0] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][y][15] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][y][14] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][y][13] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][y][12] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][y][11] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][y][10] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][y][9] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][y][8] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][y][7] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][y][6] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][y][5] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][y][4] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][y][3] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][y][2] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][y][1] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][y][0] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][z][15] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][z][14] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][z][13] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][z][12] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][z][11] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][z][10] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][z][9] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][z][8] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][z][7] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][z][6] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][z][5] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][z][4] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][z][3] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][z][2] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][z][1] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v1][z][0] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][x][15] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][x][14] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][x][13] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][x][12] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][x][11] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][x][10] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][x][9] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][x][8] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][x][7] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][x][6] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][x][5] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][x][4] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][x][3] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][x][2] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][x][1] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][x][0] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][y][15] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][y][14] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][y][13] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][y][12] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][y][11] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][y][10] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][y][9] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][y][8] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][y][7] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][y][6] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][y][5] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][y][4] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][y][3] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][y][2] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][y][1] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][y][0] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][z][15] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][z][14] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][z][13] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][z][12] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][z][11] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][z][10] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][z][9] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][z][8] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][z][7] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][z][6] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][z][5] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][z][4] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][z][3] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][z][2] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][z][1] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v2][z][0] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v3][x][15] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v3][x][14] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v3][x][13] in module LightingModule is either unconnected or has no load
+WARNING: [Synth 8-7129] Port face_o[v3][x][12] in module LightingModule is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1786.453 ; gain = 452.715 ; free physical = 18784 ; free virtual = 26956
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1804.266 ; gain = 470.527 ; free physical = 18783 ; free virtual = 26955
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a100tcsg324-1
+INFO: [Device 21-403] Loading part xc7a100tcsg324-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1812.270 ; gain = 478.531 ; free physical = 18783 ; free virtual = 26954
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:07 . Memory (MB): peak = 1826.215 ; gain = 492.477 ; free physical = 18760 ; free virtual = 26932
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input    7 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 12    
+	               12 Bit    Registers := 1     
+	                7 Bit    Registers := 1     
++---Muxes : 
+	   2 Input    7 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 240 (col length:80)
+BRAMs: 270 (col length: RAMB18 80 RAMB36 40)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 1952.527 ; gain = 618.789 ; free physical = 18614 ; free virtual = 26792
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 1952.527 ; gain = 618.789 ; free physical = 18613 ; free virtual = 26791
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 1952.527 ; gain = 618.789 ; free physical = 18613 ; free virtual = 26791
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 1952.527 ; gain = 618.789 ; free physical = 18638 ; free virtual = 26816
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 1952.527 ; gain = 618.789 ; free physical = 18638 ; free virtual = 26816
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 1952.527 ; gain = 618.789 ; free physical = 18638 ; free virtual = 26816
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 1952.527 ; gain = 618.789 ; free physical = 18638 ; free virtual = 26816
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 1952.527 ; gain = 618.789 ; free physical = 18638 ; free virtual = 26816
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 1952.527 ; gain = 618.789 ; free physical = 18638 ; free virtual = 26816
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++-+-----+------+
+| |Cell |Count |
++-+-----+------+
++-+-----+------+
+
+Report Instance Areas: 
++------+---------+-------+------+
+|      |Instance |Module |Cells |
++------+---------+-------+------+
+|1     |top      |       |     0|
++------+---------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 1952.527 ; gain = 618.789 ; free physical = 18638 ; free virtual = 26816
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 1682 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 1952.527 ; gain = 618.789 ; free physical = 18638 ; free virtual = 26816
+Synthesis Optimization Complete : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 1952.535 ; gain = 618.789 ; free physical = 18638 ; free virtual = 26816
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1952.535 ; gain = 0.000 ; free physical = 18922 ; free virtual = 27100
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2037.121 ; gain = 0.000 ; free physical = 18853 ; free virtual = 27030
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: 1bc288dd
+INFO: [Common 17-83] Releasing license: Synthesis
+26 Infos, 217 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:22 ; elapsed = 00:00:18 . Memory (MB): peak = 2037.156 ; gain = 703.418 ; free physical = 18852 ; free virtual = 27029
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1581.700; main = 1365.716; forked = 383.640
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 2919.465; main = 2037.125; forked = 992.715
+INFO: [Common 17-1381] The checkpoint '/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/gpu_pipeline/gpu_pipeline.runs/synth_1/top.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file top_utilization_synth.rpt -pb top_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sat May 18 22:15:03 2024...

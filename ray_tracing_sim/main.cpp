@@ -20,7 +20,14 @@ int main(void) {
     vector<Face_t> obj_mem = parse_obj("obj3.ply", 264, 92);
     // vector<Face_t> obj_mem = parse_obj("funny.ply", 5100, 2124);
 
+    Vector_t LIGHT_VEC = {.6, .707, .9};
+	Vector_t LIGHT_VEC_NORMALIZED = vec_normalize(LIGHT_VEC);
+
     for (Face_t face : obj_mem) {
+        transformFace(&face, TRANSFORM_MATRIX, MAT_DIM);   
+        face.color = calc_color_intensity(face.color, face.normal, LIGHT_VEC_NORMALIZED);
+        
+        
         print_face(face);
     }
 

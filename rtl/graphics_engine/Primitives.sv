@@ -16,7 +16,7 @@ typedef struct packed {
 typedef struct packed {
     Vertex_t v1;
     Vertex_t v2;
-    Vertex_t v2;
+    Vertex_t v3;
     Vector_t normal;
     logic [11:0] color;
 } Face_t;
@@ -27,6 +27,8 @@ typedef struct packed {
     Vector_t v3; // column 3
 } Matrix_t;
 
+
+localparam FACES_BITS = $bits(Face_t);
 
 endpackage : Primitives
 
@@ -98,30 +100,7 @@ module DotProduct (
 
 endmodule
 
-module TransformModule (
-    input Vertex_t Point, 
-    input Matrix_t M,
-    output Vertex_t Result
-    );
 
-    DotProduct PointX (
-        .Point  (Point),
-        .Col    (M.v1),
-        .Result (Result.x)
-    );
-
-    DotProduct PointY (
-        .Point  (Point),
-        .Col    (M.v2),
-        .Result (Result.y)
-    );
-    DotProduct PointZ (
-        .Point  (Point),
-        .Col    (M.v3),
-        .Result (Result.z)
-    );
-
-endmodule
 
 
 

@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Sat May 18 22:27:10 2024
+# Process ID: 144360
+# Current directory: /home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/gpu_pipeline/gpu_pipeline.runs/impl_1
+# Command line: vivado -log top.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source top.tcl -notrace
+# Log file: /home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/gpu_pipeline/gpu_pipeline.runs/impl_1/top.vdi
+# Journal file: /home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/gpu_pipeline/gpu_pipeline.runs/impl_1/vivado.jou
+# Running On: framework13, OS: Linux, CPU Frequency: 1387.207 MHz, CPU Physical cores: 12, Host memory: 33340 MB
+#-----------------------------------------------------------
+source top.tcl -notrace
