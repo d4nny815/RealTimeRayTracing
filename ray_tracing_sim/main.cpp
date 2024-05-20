@@ -23,12 +23,32 @@ int main(void) {
     Vector_t LIGHT_VEC = {.6, .707, .9};
 	Vector_t LIGHT_VEC_NORMALIZED = vec_normalize(LIGHT_VEC);
 
+    Display_t display = create_display();
+
+
     for (Face_t face : obj_mem) {
         transformFace(&face, TRANSFORM_MATRIX, MAT_DIM);   
         face.color = calc_color_intensity(face.color, face.normal, LIGHT_VEC_NORMALIZED);
+        // print_face(face);
         
-        
-        print_face(face);
+        intFace_t projected_face = project_Face(face, DISPLAY_WIDTH - 1, DISPLAY_HEIGHT - 1, DEPTH - 1);
+        // print_intFace(projected_face);
+
+        // std::vector<intVertex_t> vertices;
+
+        std::vector<intVertex_t> blocks = getVerticesInFace(projected_face);
+        for (size_t j=0; j<blocks.size(); j++) {
+            intVertex_t v = blocks.at(j);
+
+            if (v.z <= display_get_z(display, v.x, v.y)) {
+                display_set_z(&display, v.x, v.y, v.z);
+                display_set_color(&display, v.x, v.y, projected_face.color);
+            }
+        }
+        // printf("Rasterized face %d of %ld\n", i, faces.size());
+
+        // TODO: rasterize here
+
     }
 
 
@@ -43,8 +63,8 @@ int main(void) {
 
 
     // printf("Lighting\n");
-    // Vector_t LIGHT_VEC = {.6, .707, .9};
-	// Vector_t LIGHT_VEC_NORMALIZED = vec_normalize(LIGHT_VEC);
+    // // Vector_t LIGHT_VEC = {.6, .707, .9};
+	// // Vector_t LIGHT_VEC_NORMALIZED = vec_normalize(LIGHT_VEC);
     // for (Face_t& face: obj_mem) {
     //     face.color = calc_color_intensity(face.color, face.normal, LIGHT_VEC_NORMALIZED);
 
@@ -61,12 +81,11 @@ int main(void) {
 
 
     // printf("Rasterization\n");
-    // Display_t display = create_display();
     // rasterize(projected_faces, &display);
     // // print_color_buffer(display);
 
-    // printf("Saving Display\n");
-    // save_display(display, "output");
+    printf("Saving Display\n");
+    save_display(display, "output");
 
     // printf("Done\n");
     // return 0;

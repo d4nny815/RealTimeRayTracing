@@ -108,7 +108,7 @@ void parse_face_line(std::string line, Face_t* face, std::vector<Vertex_t> verti
     end = line.find(" ", start);
     v3_ind = line.substr(start, end - start);
 
-    printf("ind1: %s, ind2: %s, ind3: %s\n", v1_ind.c_str(), v2_ind.c_str(), v3_ind.c_str());
+    // printf("ind1: %s, ind2: %s, ind3: %s\n", v1_ind.c_str(), v2_ind.c_str(), v3_ind.c_str());
 
     face->v1 = vertices[std::stoi(v1_ind)];
     face->v2 = vertices[std::stoi(v2_ind)];

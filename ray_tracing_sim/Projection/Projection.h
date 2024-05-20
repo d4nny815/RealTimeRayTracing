@@ -1,7 +1,7 @@
 #ifndef PROJECTION_H
 #define PROJECTION_H
 
-#define FLOAT_SCALAR 128.0
+#define FLOAT_SCALAR 128.0f
 #define SHIFT 7 
 #define SPACE_CONST 1
 #define SPACE_TRANSLATOR (unsigned int)(SPACE_CONST*FLOAT_SCALAR)

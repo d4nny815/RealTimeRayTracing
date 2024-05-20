@@ -5,6 +5,9 @@ Running: /tools/Xilinx/Vivado/2023.2/bin/unwrapped/lnx64.o/xelab --incr --debug 
 Using 8 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
+WARNING: [VRFC 10-9543] actual bit length 32 differs from formal bit length 16 for port 'screen_width' [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/GPU.sv:110]
+WARNING: [VRFC 10-9543] actual bit length 32 differs from formal bit length 16 for port 'screen_height' [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/GPU.sv:111]
+WARNING: [VRFC 10-9543] actual bit length 32 differs from formal bit length 16 for port 'screen_depth' [/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/GPU.sv:112]
 Completed static elaboration
 Starting simulation data flow analysis
 WARNING: [XSIM 43-4100] "/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/gpu_pipeline/gpu_pipeline.sim/sim_1/behav/xsim/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
@@ -12,9 +15,14 @@ WARNING: [XSIM 43-4100] "/home/danny/Documents/school/cpe542/real_time_ray_traci
 Completed simulation data flow analysis
 Time Resolution for simulation is 1ps
 Compiling package xil_defaultlib.Primitives
-Compiling package xil_defaultlib.$unit_Primitives_sv_2720079279
+Compiling package xil_defaultlib.$unit_Primitives_sv_1146920328
 Compiling module xil_defaultlib.Counter(BITS=7)
 Compiling module xil_defaultlib.LightingModule
+Compiling module xil_defaultlib.Project_Vx
+Compiling module xil_defaultlib.Project_Vy
+Compiling module xil_defaultlib.Project_Vz
+Compiling module xil_defaultlib.ProjectVertex
+Compiling module xil_defaultlib.ProjectionModule
 Compiling module xil_defaultlib.GPU_default
 Compiling module xil_defaultlib.ObjectMemory
 Compiling module xil_defaultlib.top

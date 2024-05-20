@@ -35,6 +35,15 @@ func main() {
 	lighting_vec.Print_dec()
 	fmt.Println(lighting_vec.Make_machine_code())
 
+	width := uint16(255)
+	height := uint16(255)
+	depth := uint16(255)
+
+	fmt.Println("width:", width, "height:", height, "depth:", depth)
+
+	var scalar float32 = 128.0
+	fmt.Printf("scalar %f becomes %x\n", scalar, primitives.Float_to_q16_16(scalar))
+
 }
 
 func make_machine_code(filename string, obj_mem []primitives.Face_t) {

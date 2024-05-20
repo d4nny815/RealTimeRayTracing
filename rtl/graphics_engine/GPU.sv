@@ -18,7 +18,7 @@ module GPU #(
     // ! for debug
     logic [FACE_CNT_BITS-1:0] face_num_T, face_num_L, face_num_P;
 
-    Face_t face_L, face_lighting, face_P;
+    Face_t face_L, face_lighting, face_P, face_projection;
 
 
     // ##################################################
@@ -100,6 +100,18 @@ module GPU #(
         face_num_P <= face_num_L;
         face_P <= face_lighting;
     end
+
+    localparam SCREEN_WIDTH = 255;
+    localparam SCREEN_HEIGHT = 255;
+    localparam SCREEN_DEPTH = 255;
+
+    ProjectionModule projection (
+        .face_i         (face_P),
+        .screen_width   (SCREEN_WIDTH),
+        .screen_height  (SCREEN_HEIGHT),
+        .screen_depth   (SCREEN_DEPTH),
+        .face_o         (face_projection)
+    );
 
 
 

@@ -42,7 +42,7 @@ task q8_8_mult(
     );
 
     logic [31:0] tmp;
-    logic sign_a, sign_b, res_sign;
+    logic sign_a, sign_b;
     logic [15:0] op1, op2;
 
 
@@ -78,6 +78,50 @@ task q8_8_mult(
     endcase
     
 endtask : q8_8_mult
+
+task q16_16_mult (
+    input logic [31:0] a,
+    input logic [31:0] b,
+    output logic [31:0] result
+    );
+
+    logic [63:0] tmp;
+    logic sign_a, sign_b, res_sign;
+    logic [31:0] op1, op2;
+
+    sign_a = a[31];
+    sign_b = b[31];
+
+    case ({sign_a, sign_b})
+        2'b00: begin
+            op1 = a;
+            op2 = b;
+        end
+        2'b10: begin
+            op1 = -a;
+            op2 = b;
+        end 
+        2'b01: begin
+            op1 = a;
+            op2 = -b;
+        end
+        2'b11: begin
+            op1 = -a;
+            op2 = -b;
+        end
+    endcase
+
+    tmp = op1 * op2;
+
+    case ({sign_a, sign_b})
+        2'b00: result = tmp[47:16];
+        2'b10: result = -tmp[47:16];
+        2'b01: result = -tmp[47:16];
+        2'b11: result = tmp[47:16];
+    endcase
+
+endtask : q16_16_mult
+
 
 
 module DotProduct (

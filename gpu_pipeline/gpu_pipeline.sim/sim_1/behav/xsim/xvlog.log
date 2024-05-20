@@ -6,6 +6,12 @@ INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/danny/Documents/school/
 INFO: [VRFC 10-311] analyzing module LightingModule
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/ObjectMemory.sv" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module ObjectMemory
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/Projection.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ProjectionModule
+INFO: [VRFC 10-311] analyzing module ProjectVertex
+INFO: [VRFC 10-311] analyzing module Project_Vx
+INFO: [VRFC 10-311] analyzing module Project_Vy
+INFO: [VRFC 10-311] analyzing module Project_Vz
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/cntr_sync_clr.sv" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module Counter
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/danny/Documents/school/cpe542/real_time_ray_tracing_engine/rtl/graphics_engine/top_level.sv" into library xil_defaultlib

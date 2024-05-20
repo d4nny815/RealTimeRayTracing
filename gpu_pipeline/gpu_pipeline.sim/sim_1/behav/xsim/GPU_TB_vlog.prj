@@ -4,6 +4,7 @@ sv xil_defaultlib  \
 "../../../../../rtl/graphics_engine/GPU.sv" \
 "../../../../../rtl/graphics_engine/Lightning.sv" \
 "../../../../../rtl/graphics_engine/ObjectMemory.sv" \
+"../../../../../rtl/graphics_engine/Projection.sv" \
 "../../../../../rtl/graphics_engine/cntr_sync_clr.sv" \
 "../../../../../rtl/graphics_engine/top_level.sv" \
 "../../../../../verfication/GPU_TB.sv" \

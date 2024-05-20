@@ -5,6 +5,14 @@ import (
 	"math"
 )
 
+func Uint16_to_q8_8(x uint16) int16 {
+	return int16(x << 8)
+}
+
+func Float_to_q16_16(f float32) int32 {
+	return int32(f * 65536.0)
+}
+
 func Float_to_q8_8(f float32) int16 {
 	// fmt.Printf("f: %f, f*256: %f, uint16(f*256): %d\n", f, f*256.0, uint16(f*256.0))
 	return int16(f * 256.0)

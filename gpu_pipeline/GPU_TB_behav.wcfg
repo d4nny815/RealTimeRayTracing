@@ -7,24 +7,25 @@
          <top_modules>
             <top_module name="GPU_TB" />
             <top_module name="Primitives" />
-            <top_module name="\$unit_Primitives_sv_2720079279 " />
+            <top_module name="\$unit_Primitives_sv_1146920328 " />
             <top_module name="glbl" />
          </top_modules>
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="893.199 ns"></ZoomStartTime>
-      <ZoomEndTime time="904.010 ns"></ZoomEndTime>
-      <Cursor1Time time="895.000 ns"></Cursor1Time>
+      <ZoomStartTime time="30.727 ns"></ZoomStartTime>
+      <ZoomEndTime time="85.578 ns"></ZoomEndTime>
+      <Cursor1Time time="46.627 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="184"></NameColumnWidth>
+      <NameColumnWidth column_width="168"></NameColumnWidth>
       <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="11" />
    <wave_markers>
       <marker label="" time="25000" />
       <marker label="" time="945000" />
+      <marker label="" time="45000" />
    </wave_markers>
    <wvobject type="group" fp_name="group18">
       <obj_property name="label">Top</obj_property>
@@ -204,14 +205,199 @@
       <obj_property name="label">Projection</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
-      <wvobject type="array" fp_name="/GPU_TB/DUT/gpu/face_P">
-         <obj_property name="ElementShortName">face_P</obj_property>
-         <obj_property name="ObjectShortName">face_P</obj_property>
-         <obj_property name="isExpanded"></obj_property>
-      </wvobject>
       <wvobject type="array" fp_name="/GPU_TB/DUT/gpu/face_num_P">
          <obj_property name="ElementShortName">face_num_P[6:0]</obj_property>
          <obj_property name="ObjectShortName">face_num_P[6:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/GPU_TB/DUT/gpu/face_P">
+         <obj_property name="ElementShortName">face_P</obj_property>
+         <obj_property name="ObjectShortName">face_P</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/GPU_TB/DUT/gpu/projection/face_i">
+         <obj_property name="ElementShortName">face_i</obj_property>
+         <obj_property name="ObjectShortName">face_i</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/GPU_TB/DUT/gpu/projection/screen_width">
+         <obj_property name="ElementShortName">screen_width[15:0]</obj_property>
+         <obj_property name="ObjectShortName">screen_width[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/GPU_TB/DUT/gpu/projection/screen_height">
+         <obj_property name="ElementShortName">screen_height[15:0]</obj_property>
+         <obj_property name="ObjectShortName">screen_height[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/GPU_TB/DUT/gpu/projection/screen_depth">
+         <obj_property name="ElementShortName">screen_depth[15:0]</obj_property>
+         <obj_property name="ObjectShortName">screen_depth[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/GPU_TB/DUT/gpu/projection/face_o">
+         <obj_property name="ElementShortName">face_o</obj_property>
+         <obj_property name="ObjectShortName">face_o</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject type="array" fp_name="/GPU_TB/DUT/gpu/projection/face_o.v1">
+            <obj_property name="ElementShortName">.v1</obj_property>
+            <obj_property name="ObjectShortName">.v1</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/GPU_TB/DUT/gpu/projection/face_o.v2">
+            <obj_property name="ElementShortName">.v2</obj_property>
+            <obj_property name="ObjectShortName">.v2</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/GPU_TB/DUT/gpu/projection/face_o.v3">
+            <obj_property name="ElementShortName">.v3</obj_property>
+            <obj_property name="ObjectShortName">.v3</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/GPU_TB/DUT/gpu/projection/face_o.normal">
+            <obj_property name="ElementShortName">.normal</obj_property>
+            <obj_property name="ObjectShortName">.normal</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/GPU_TB/DUT/gpu/projection/face_o.color">
+            <obj_property name="ElementShortName">.color[11:0]</obj_property>
+            <obj_property name="ObjectShortName">.color[11:0]</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="group" fp_name="group655">
+         <obj_property name="label">V1</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="array" fp_name="/GPU_TB/DUT/gpu/projection/new_v1/v_i">
+            <obj_property name="ElementShortName">v_i</obj_property>
+            <obj_property name="ObjectShortName">v_i</obj_property>
+            <obj_property name="Radix">REALRADIX</obj_property>
+            <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+            <obj_property name="radix_fractionWidth">8</obj_property>
+            <obj_property name="radix_otherWidth">0</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/GPU_TB/DUT/gpu/projection/new_v1/screen_width">
+            <obj_property name="ElementShortName">screen_width[15:0]</obj_property>
+            <obj_property name="ObjectShortName">screen_width[15:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/GPU_TB/DUT/gpu/projection/new_v1/screen_height">
+            <obj_property name="ElementShortName">screen_height[15:0]</obj_property>
+            <obj_property name="ObjectShortName">screen_height[15:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/GPU_TB/DUT/gpu/projection/new_v1/screen_depth">
+            <obj_property name="ElementShortName">screen_depth[15:0]</obj_property>
+            <obj_property name="ObjectShortName">screen_depth[15:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/GPU_TB/DUT/gpu/projection/new_v1/v_o">
+            <obj_property name="ElementShortName">v_o</obj_property>
+            <obj_property name="ObjectShortName">v_o</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+            <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+            <obj_property name="radix_fractionWidth">8</obj_property>
+            <obj_property name="radix_otherWidth">0</obj_property>
+         </wvobject>
+         <wvobject type="group" fp_name="group664">
+            <obj_property name="label">v_x</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject type="array" fp_name="/GPU_TB/DUT/gpu/projection/new_v1/new_vx/x_i">
+               <obj_property name="ElementShortName">x_i[15:0]</obj_property>
+               <obj_property name="ObjectShortName">x_i[15:0]</obj_property>
+               <obj_property name="Radix">REALRADIX</obj_property>
+               <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+               <obj_property name="radix_fractionWidth">8</obj_property>
+               <obj_property name="radix_otherWidth">0</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/GPU_TB/DUT/gpu/projection/new_v1/new_vx/screen_width">
+               <obj_property name="ElementShortName">screen_width[15:0]</obj_property>
+               <obj_property name="ObjectShortName">screen_width[15:0]</obj_property>
+               <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/GPU_TB/DUT/gpu/projection/new_v1/new_vx/x_o">
+               <obj_property name="ElementShortName">x_o[15:0]</obj_property>
+               <obj_property name="ObjectShortName">x_o[15:0]</obj_property>
+               <obj_property name="Radix">REALRADIX</obj_property>
+               <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+               <obj_property name="radix_fractionWidth">8</obj_property>
+               <obj_property name="radix_otherWidth">0</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/GPU_TB/DUT/gpu/projection/new_v1/new_vx/conv_screen_width">
+               <obj_property name="ElementShortName">conv_screen_width[31:0]</obj_property>
+               <obj_property name="ObjectShortName">conv_screen_width[31:0]</obj_property>
+               <obj_property name="Radix">REALRADIX</obj_property>
+               <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+               <obj_property name="radix_fractionWidth">16</obj_property>
+               <obj_property name="radix_otherWidth">0</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/GPU_TB/DUT/gpu/projection/new_v1/new_vx/conv_x">
+               <obj_property name="ElementShortName">conv_x[31:0]</obj_property>
+               <obj_property name="ObjectShortName">conv_x[31:0]</obj_property>
+               <obj_property name="Radix">REALRADIX</obj_property>
+               <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+               <obj_property name="radix_fractionWidth">16</obj_property>
+               <obj_property name="radix_otherWidth">0</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/GPU_TB/DUT/gpu/projection/new_v1/new_vx/shift">
+               <obj_property name="ElementShortName">shift[31:0]</obj_property>
+               <obj_property name="ObjectShortName">shift[31:0]</obj_property>
+               <obj_property name="Radix">REALRADIX</obj_property>
+               <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+               <obj_property name="radix_fractionWidth">16</obj_property>
+               <obj_property name="radix_otherWidth">0</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/GPU_TB/DUT/gpu/projection/new_v1/new_vx/shift_int">
+               <obj_property name="ElementShortName">shift_int[15:0]</obj_property>
+               <obj_property name="ObjectShortName">shift_int[15:0]</obj_property>
+               <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/GPU_TB/DUT/gpu/projection/new_v1/new_vx/shift_2">
+               <obj_property name="ElementShortName">shift_2[31:0]</obj_property>
+               <obj_property name="ObjectShortName">shift_2[31:0]</obj_property>
+               <obj_property name="Radix">REALRADIX</obj_property>
+               <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+               <obj_property name="radix_fractionWidth">16</obj_property>
+               <obj_property name="radix_otherWidth">0</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/GPU_TB/DUT/gpu/projection/new_v1/new_vx/result">
+               <obj_property name="ElementShortName">result[15:0]</obj_property>
+               <obj_property name="ObjectShortName">result[15:0]</obj_property>
+               <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+               <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+               <obj_property name="radix_fractionWidth">16</obj_property>
+               <obj_property name="radix_otherWidth">0</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/GPU_TB/DUT/gpu/projection/new_v1/new_vx/FLOAT_SCALAR">
+               <obj_property name="ElementShortName">FLOAT_SCALAR[31:0]</obj_property>
+               <obj_property name="ObjectShortName">FLOAT_SCALAR[31:0]</obj_property>
+               <obj_property name="Radix">REALRADIX</obj_property>
+               <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+               <obj_property name="radix_fractionWidth">16</obj_property>
+               <obj_property name="radix_otherWidth">0</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject type="group" fp_name="group665">
+            <obj_property name="label">v_y</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject type="array" fp_name="/GPU_TB/DUT/gpu/projection/new_v1/new_vy/y_i">
+               <obj_property name="ElementShortName">y_i[15:0]</obj_property>
+               <obj_property name="ObjectShortName">y_i[15:0]</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/GPU_TB/DUT/gpu/projection/new_v1/new_vy/screen_height">
+               <obj_property name="ElementShortName">screen_height[15:0]</obj_property>
+               <obj_property name="ObjectShortName">screen_height[15:0]</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/GPU_TB/DUT/gpu/projection/new_v1/new_vy/y_o">
+               <obj_property name="ElementShortName">y_o[15:0]</obj_property>
+               <obj_property name="ObjectShortName">y_o[15:0]</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject type="group" fp_name="group666">
+            <obj_property name="label">v_z</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject type="array" fp_name="/GPU_TB/DUT/gpu/projection/new_v1/new_vz/z_i">
+               <obj_property name="ElementShortName">z_i[15:0]</obj_property>
+               <obj_property name="ObjectShortName">z_i[15:0]</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/GPU_TB/DUT/gpu/projection/new_v1/new_vz/screen_depth">
+               <obj_property name="ElementShortName">screen_depth[15:0]</obj_property>
+               <obj_property name="ObjectShortName">screen_depth[15:0]</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/GPU_TB/DUT/gpu/projection/new_v1/new_vz/z_o">
+               <obj_property name="ElementShortName">z_o[15:0]</obj_property>
+               <obj_property name="ObjectShortName">z_o[15:0]</obj_property>
+            </wvobject>
+         </wvobject>
       </wvobject>
    </wvobject>
    <wvobject fp_name="divider30" type="divider">

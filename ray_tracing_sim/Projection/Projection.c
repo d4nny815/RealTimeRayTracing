@@ -14,7 +14,10 @@ uint8_t project_Vx(Vertex_t v, uint8_t screen_width) {
     // printf("x using float math %f with v->x: %f\n", x, v->x);
 
     int16_t shift = (int16_t)(v.x * FLOAT_SCALAR);  // 2^8, so we can use bit shift and not lose precision
-    shift = ((shift >> 2) + SPACE_TRANSLATOR) >> 1;
+    
+    shift >>= 2;
+    shift += SPACE_TRANSLATOR;
+    shift >>= 1;
     shift *= screen_width;
     shift >>= SHIFT;
     if (shift < 0) {
@@ -22,6 +25,7 @@ uint8_t project_Vx(Vertex_t v, uint8_t screen_width) {
     } else if (shift > screen_width) {
     shift = screen_width;
     }
+    // printf("shift: %hhd hex: %hhx\n\n", (uint8_t)shift);
 
     // printf("x using int math %hhu with v->x: %f\n", (uint8_t)shift, v->x);
     return (uint8_t)shift;
