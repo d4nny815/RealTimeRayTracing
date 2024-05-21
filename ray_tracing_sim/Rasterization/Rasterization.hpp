@@ -2,8 +2,8 @@
 #define RASTERIZATION_H
 
 // Where DISPLAY_WIDTH and DISPLAY_HEIGHT are the dimensions of the display
-#define DISPLAY_WIDTH 400
-#define DISPLAY_HEIGHT 256
+#define DISPLAY_WIDTH 256
+#define DISPLAY_HEIGHT 192
 #define DEPTH 256
 
 #include <unistd.h>
@@ -18,9 +18,9 @@
 
 
 // ? what if i calc the max amount of blocks a polygon can be and that becomes the MAX POLYGON Buffer size 
-#define MAX_POLYGON_BUFFER DISPLAY_WIDTH*DISPLAY_HEIGHT*DEPTH // need a 2^24 = 16MB Memory Block if storing 8b color
+// #define MAX_POLYGON_BUFFER DISPLAY_WIDTH*DISPLAY_HEIGHT*DEPTH // need a 2^24 = 16MB Memory Block if storing 8b color
 // ! this changes depending on display size
-#define FRAME_BUFFER_SIZE DISPLAY_HEIGHT*DISPLAY_WIDTH  // need a 2^16 = 64kB Framebuffer 
+// #define FRAME_BUFFER_SIZE DISPLAY_HEIGHT*DISPLAY_WIDTH  // need a 2^16 = 64kB Framebuffer 
 
 #include "../Primitives/Primitives.hpp"
 #include <stdlib.h>

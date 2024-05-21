@@ -13,7 +13,7 @@ uint16_t project_Vx(Vertex_t v, uint16_t screen_width) {
     // v->x = x;
     // printf("x using float math %f with v->x: %f\n", x, v->x);
 
-    int16_t shift = (int16_t)(v.x * FLOAT_SCALAR);  // 2^8, so we can use bit shift and not lose precision
+    int32_t shift = (int32_t)(v.x * FLOAT_SCALAR);  // 2^8, so we can use bit shift and not lose precision
     
     shift >>= 2;
     shift += SPACE_TRANSLATOR;
@@ -39,7 +39,7 @@ uint16_t project_Vx(Vertex_t v, uint16_t screen_width) {
  * @return The y-coordinate of the projected vertex.
 */
 uint16_t project_Vy(Vertex_t v, uint16_t screen_height) {
-    int16_t shift = (int16_t)(-v.y * FLOAT_SCALAR);  // 2^8, so we can use bit shift and not lose precision
+    int32_t shift = (int32_t)(-v.y * FLOAT_SCALAR);  // 2^8, so we can use bit shift and not lose precision
     shift = ((shift >> 2) + SPACE_TRANSLATOR) >> 1;
     shift *= screen_height;
     shift >>= SHIFT;
@@ -60,7 +60,7 @@ uint16_t project_Vy(Vertex_t v, uint16_t screen_height) {
 */
 uint16_t project_Vz(Vertex_t v, uint16_t screen_depth) {
 
-    int16_t shift = (int16_t)(v.z * FLOAT_SCALAR);  // 2^8, so we can use bit shift and not lose precision
+    int32_t shift = (int32_t)(v.z * FLOAT_SCALAR);  // 2^8, so we can use bit shift and not lose precision
     shift = ((shift >> 2) + SPACE_TRANSLATOR) >> 1;
     shift *= screen_depth;
     shift >>= SHIFT;
