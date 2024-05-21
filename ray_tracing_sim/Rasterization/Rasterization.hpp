@@ -2,7 +2,7 @@
 #define RASTERIZATION_H
 
 // Where DISPLAY_WIDTH and DISPLAY_HEIGHT are the dimensions of the display
-#define DISPLAY_WIDTH 256
+#define DISPLAY_WIDTH 400
 #define DISPLAY_HEIGHT 256
 #define DEPTH 256
 

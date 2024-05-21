@@ -6,7 +6,7 @@
  * @param screen_width The width of the screen.
  * @return The x-coordinate of the projected vertex.
 */
-uint8_t project_Vx(Vertex_t v, uint8_t screen_width) {
+uint16_t project_Vx(Vertex_t v, uint16_t screen_width) {
     // for testing purposes, to see accuracy compared to int math
     // double x = (((double)v->x / 4.0) + 1) / 2.0;
     // x *= screen_width + 1;
@@ -25,10 +25,10 @@ uint8_t project_Vx(Vertex_t v, uint8_t screen_width) {
     } else if (shift > screen_width) {
     shift = screen_width;
     }
-    // printf("shift: %hhd hex: %hhx\n\n", (uint8_t)shift);
+    // printf("shift: %hhd hex: %hhx\n\n", (uint16_t)shift);
 
-    // printf("x using int math %hhu with v->x: %f\n", (uint8_t)shift, v->x);
-    return (uint8_t)shift;
+    // printf("x using int math %hhu with v->x: %f\n", (uint16_t)shift, v->x);
+    return (uint16_t)shift;
 }
 
 
@@ -38,7 +38,7 @@ uint8_t project_Vx(Vertex_t v, uint8_t screen_width) {
  * @param screen_height The height of the screen.
  * @return The y-coordinate of the projected vertex.
 */
-uint8_t project_Vy(Vertex_t v, uint8_t screen_height) {
+uint16_t project_Vy(Vertex_t v, uint16_t screen_height) {
     int16_t shift = (int16_t)(-v.y * FLOAT_SCALAR);  // 2^8, so we can use bit shift and not lose precision
     shift = ((shift >> 2) + SPACE_TRANSLATOR) >> 1;
     shift *= screen_height;
@@ -48,7 +48,7 @@ uint8_t project_Vy(Vertex_t v, uint8_t screen_height) {
     } else if (shift > screen_height) {
         shift = screen_height;
     }
-    return (uint8_t)shift;
+    return (uint16_t)shift;
 }
 
 
@@ -58,7 +58,7 @@ uint8_t project_Vy(Vertex_t v, uint8_t screen_height) {
  * @param screen_depth The depth of the screen.
  * @return The z-coordinate of the projected vertex.
 */
-uint8_t project_Vz(Vertex_t v, uint8_t screen_depth) {
+uint16_t project_Vz(Vertex_t v, uint16_t screen_depth) {
 
     int16_t shift = (int16_t)(v.z * FLOAT_SCALAR);  // 2^8, so we can use bit shift and not lose precision
     shift = ((shift >> 2) + SPACE_TRANSLATOR) >> 1;
@@ -70,7 +70,7 @@ uint8_t project_Vz(Vertex_t v, uint8_t screen_depth) {
         shift = screen_depth;
     }
 
-    return (uint8_t)shift;
+    return (uint16_t)shift;
 }
 
 
@@ -82,7 +82,7 @@ uint8_t project_Vz(Vertex_t v, uint8_t screen_depth) {
  * @param screen_depth The depth of the screen.
  * @return pointer to the projected face, NULL if malloc fails
 */
-intFace_t project_Face(Face_t f, uint8_t screen_width, uint8_t screen_height, uint8_t screen_depth) {
+intFace_t project_Face(Face_t f, uint16_t screen_width, uint16_t screen_height, uint16_t screen_depth) {
     intFace_t new_f;
 
     new_f.v1.x = project_Vx(f.v1, screen_width);

@@ -9,9 +9,9 @@
 #include <stdlib.h>
 #include "../Primitives/Primitives.hpp"
 
-uint8_t project_Vx(Vertex_t v, uint8_t screen_width);
-uint8_t project_Vy(Vertex_t v, uint8_t screen_height);
-uint8_t project_Vz(Vertex_t v, uint8_t screen_depth);
-intFace_t project_Face(Face_t f, uint8_t screen_width, uint8_t screen_height, uint8_t screen_depth);
+uint16_t project_Vx(Vertex_t v, uint16_t screen_width);
+uint16_t project_Vy(Vertex_t v, uint16_t screen_height);
+uint16_t project_Vz(Vertex_t v, uint16_t screen_depth);
+intFace_t project_Face(Face_t f, uint16_t screen_width, uint16_t screen_height, uint16_t screen_depth);
 
 #endif

@@ -1,7 +1,7 @@
 #ifndef DISPLAY_HPP
 #define DISPLAY_HPP
 
-#define DISPLAY_WIDTH 256
+#define DISPLAY_WIDTH 400
 #define DISPLAY_HEIGHT 256
 
 #include <cstdint>

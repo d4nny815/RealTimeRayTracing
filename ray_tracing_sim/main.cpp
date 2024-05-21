@@ -25,6 +25,7 @@ int main(void) {
 
     Display_t display = create_display();
 
+    int i = 0;
 
     for (Face_t face : obj_mem) {
         transformFace(&face, TRANSFORM_MATRIX, MAT_DIM);   
@@ -45,7 +46,7 @@ int main(void) {
                 display_set_color(&display, v.x, v.y, projected_face.color);
             }
         }
-        // printf("Rasterized face %d of %ld\n", i, faces.size());
+        // printf("Rasterized face %d of %ld\n", i++, obj_mem.size());
 
         // TODO: rasterize here
 
