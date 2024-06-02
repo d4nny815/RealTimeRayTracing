@@ -19,8 +19,8 @@ func main() {
 	mem_size_in_bytes := len(obj_mem) * int(unsafe.Sizeof(obj_mem[0]))
 	fmt.Println("mem size:", mem_size_in_bytes, "bytes")
 
-	transformation_matrix := [3][3]float32{{.125, 0.0, 0.0},
-		{0.0, .875, 0.0},
+	transformation_matrix := [3][3]float32{{1.125, 0.0, 0.0},
+		{0.0, 1.875, 0.0},
 		{0.0, 0.0, .5}}
 	new_matrix := transformation.NewMatrix_t(transformation_matrix)
 	for i := range obj_mem {
@@ -30,24 +30,25 @@ func main() {
 
 	make_machine_code("obj3.mem", obj_mem)
 
-	lighting_vec := primitives.NewVector_t(.6, .707, .9)
-	lighting_vec = lighting_vec.Normalize()
-	lighting_vec.Print_dec()
-	fmt.Println(lighting_vec.Make_machine_code())
-
-	width := uint16(255)
-	height := uint16(255)
-	depth := uint16(255)
-
-	fmt.Println("width:", width, "height:", height, "depth:", depth)
-
-	var scalar float32 = 128.0
-	fmt.Printf("scalar %f becomes %x\n", scalar, primitives.Float_to_q16_16(scalar))
+	// lighting_vec := primitives.NewVector_t(.6, .707, .9)
+	// lighting_vec = lighting_vec.Normalize()
+	// lighting_vec.Print_dec()
+	// fmt.Println(lighting_vec.Make_machine_code())
+	//
+	// width := uint16(255)
+	// height := uint16(255)
+	// depth := uint16(255)
+	//
+	// fmt.Println("width:", width, "height:", height, "depth:", depth)
+	//
+	// var scalar float32 = 128.0
+	// fmt.Printf("scalar %f becomes %x\n", scalar, primitives.Float_to_q16_16(scalar))
 
 }
 
 func make_machine_code(filename string, obj_mem []primitives.Face_t) {
-	abs_path, err := filepath.Abs(filename)
+	rtl_path := "../rtl/graphics_engine"
+	abs_path, err := filepath.Abs(rtl_path + "/" + filename)
 	if err != nil {
 		panic(err)
 	}
@@ -59,7 +60,7 @@ func make_machine_code(filename string, obj_mem []primitives.Face_t) {
 
 	for i := range obj_mem {
 		face := obj_mem[i]
-		face.Print_dec()
+		// face.Print_dec()
 		// fmt.Println(face.Make_machine_code())
 		file.WriteString(face.Make_machine_code())
 		file.WriteString("\n")
