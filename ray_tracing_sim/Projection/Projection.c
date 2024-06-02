@@ -40,7 +40,9 @@ uint16_t project_Vx(Vertex_t v, uint16_t screen_width) {
 */
 uint16_t project_Vy(Vertex_t v, uint16_t screen_height) {
     int32_t shift = (int32_t)(-v.y * FLOAT_SCALAR);  // 2^8, so we can use bit shift and not lose precision
-    shift = ((shift >> 2) + SPACE_TRANSLATOR) >> 1;
+    shift >>= 2;
+    shift += SPACE_TRANSLATOR;
+    shift >>= 1;
     shift *= screen_height;
     shift >>= SHIFT;
     if (shift < 0) {

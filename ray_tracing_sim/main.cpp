@@ -33,7 +33,7 @@ int main(void) {
         // print_face(face);
         
         intFace_t projected_face = project_Face(face, DISPLAY_WIDTH - 1, DISPLAY_HEIGHT - 1, DEPTH - 1);
-        // print_intFace(projected_face);
+        print_intFace(projected_face);
 
         // std::vector<intVertex_t> vertices;
 
@@ -47,8 +47,6 @@ int main(void) {
             }
         }
         // printf("Rasterized face %d of %ld\n", i++, obj_mem.size());
-
-        // TODO: rasterize here
 
     }
 

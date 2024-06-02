@@ -102,7 +102,7 @@ module GPU #(
     end
 
     localparam SCREEN_WIDTH = 255;
-    localparam SCREEN_HEIGHT = 255;
+    localparam SCREEN_HEIGHT = 192;
     localparam SCREEN_DEPTH = 255;
 
     ProjectionModule projection (

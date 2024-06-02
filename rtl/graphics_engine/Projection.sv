@@ -126,8 +126,8 @@ module Project_Vy(
     localparam SPACE_TRANSLATOR = 16'h0080; // 128
 
     always_comb begin
-        conv_y = $signed(y_i) << 8; // q8.8 to q16.16
-        conv_y = -conv_y;
+        conv_y = $signed(-y_i) << 8; // q8.8 to q16.16
+        // conv_y = -conv_y;
         q16_16_mult(conv_y, FLOAT_SCALAR, shift);
 
         shift_int = shift[31:16];
@@ -135,6 +135,7 @@ module Project_Vy(
         shift_int = shift_int + SPACE_TRANSLATOR;
         shift_int = shift_int >> 1;
 
+        // buffer = shift_int * screen_height;
         conv_screen_height = screen_height << 16; // u16.0 to q16.16
         shift_2 = shift_int << 16; // u16.0 to q16.16
 
