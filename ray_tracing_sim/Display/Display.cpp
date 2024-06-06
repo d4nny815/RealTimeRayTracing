@@ -1,6 +1,6 @@
 #include "Display.hpp"
 
-Display_t create_display() {
+Display_t create_display(const char* name) {
     Display_t display;
 
     for (int i = 0; i < DISPLAY_HEIGHT; i++) {
@@ -9,6 +9,8 @@ Display_t create_display() {
             display.z_buffer[j][i] = 255;
         }
     }
+
+    display.name = name;
 
     return display;
 }
@@ -42,10 +44,10 @@ uint16_t display_get_z(Display_t display, int h_pix, int v_pix) {
     return display.z_buffer[h_pix][v_pix];
 }
 
-void save_display(Display_t display, const char* filename) {
+void save_display(Display_t display) {
     std::ofstream file;
     std::string extension = ".ppm";
-    std::string full_filename = filename + extension;
+    std::string full_filename = display.name + extension;
     file.open(full_filename);
     if (!file.is_open()) {
         std::cerr << "Error opening file" << std::endl;

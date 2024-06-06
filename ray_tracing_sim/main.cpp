@@ -13,17 +13,22 @@ using namespace std;
 
 int main(void) {
     // ! DANNY
-    // ! export ply with -z forward and y up
-    // vector<Face_t> obj_mem = parse_obj("scene.ply", 90, 152);
-    // vector<Face_t> obj_mem = parse_obj("cube.ply", 24, 12);
-    // vector<Face_t> obj_mem = parse_obj("cube2.ply", 24, 12);
-    vector<Face_t> obj_mem = parse_obj("obj3.ply", 264, 92);
-    // vector<Face_t> obj_mem = parse_obj("funny.ply", 5100, 2124);
+    // ! export ply with z forward and y up
+    // vector<Face_t> obj_mem = parse_obj("demo/torus.ply", 576, 1152);
+    // Display_t display = create_display("demo/torus");
+    // vector<Face_t> obj_mem = parse_obj("demo/two_colors.ply", 41, 74);
+    // Display_t display = create_display("demo/two_colors");
+    // vector<Face_t> obj_mem = parse_obj("demo/monkey.ply", 507, 967);
+    // Display_t display = create_display("demo/monkey"); 
+    // vector<Face_t> obj_mem = parse_obj("demo/monkey_spheres.ply", 1513, 2967);
+    // Display_t display = create_display("demo/monkey_spheres"); 
+    vector<Face_t> obj_mem = parse_obj("demo/room.ply", 107, 190);
+    Display_t display = create_display("demo/room"); 
+
 
     Vector_t LIGHT_VEC = {.6, .707, .9};
 	Vector_t LIGHT_VEC_NORMALIZED = vec_normalize(LIGHT_VEC);
 
-    Display_t display = create_display();
 
     int i = 0;
 
@@ -33,7 +38,7 @@ int main(void) {
         // print_face(face);
         
         intFace_t projected_face = project_Face(face, DISPLAY_WIDTH - 1, DISPLAY_HEIGHT - 1, DEPTH - 1);
-        print_intFace(projected_face);
+        // print_intFace(projected_face);
 
         // std::vector<intVertex_t> vertices;
 
@@ -84,7 +89,7 @@ int main(void) {
     // // print_color_buffer(display);
 
     printf("Saving Display\n");
-    save_display(display, "output");
+    save_display(display);
 
     // printf("Done\n");
     // return 0;
